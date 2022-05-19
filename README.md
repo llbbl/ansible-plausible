@@ -42,7 +42,7 @@ Make sure to copy your SSH public key to your server and enable passwordless log
 
 Edit the file at `common/vars/main.yml`.
 
-Passwords have to be generated with mkpasswd, which is commonly available on Linux systems but not on macOS. There are a couple of (options)[https://serversforhackers.com/c/create-user-in-ansible]. The official docs (recommend)[https://docs.ansible.com/ansible/latest/reference_appendices/faq.html#how-do-i-generate-encrypted-passwords-for-the-user-module] using the pip library passlib with some inline python. 
+Passwords have to be generated with mkpasswd, which is commonly available on Linux systems but not on macOS. There are a couple of [options](https://serversforhackers.com/c/create-user-in-ansible). The official docs [recommend](https://docs.ansible.com/ansible/latest/reference_appendices/faq.html#how-do-i-generate-encrypted-passwords-for-the-user-module) using the pip library passlib with some inline python. 
 
 
 2. Update nginx conf
