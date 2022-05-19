@@ -4,6 +4,6 @@
     name: "{{ hostname }}"
 
 - name: Set timezone
-  timezone:
+  community.general.timezone:
     hwclock: "UTC"
     name: "{{ timezone_name }}"

@@ -38,30 +38,50 @@ all:
 
 Make sure to copy your SSH public key to your server and enable passwordless login.
 
-Now, edit the file at `common/vars/main.yml`. Change the values are you see fit.
+1. Change the Common variables
+
+Edit the file at `common/vars/main.yml`.
+
+Passwords have to be generated with mkpasswd, which is commonly available on Linux systems but not on macOS. There are a couple of (options)[https://serversforhackers.com/c/create-user-in-ansible]. The official docs (recommend)[https://docs.ansible.com/ansible/latest/reference_appendices/faq.html#how-do-i-generate-encrypted-passwords-for-the-user-module] using the pip library passlib with some inline python. 
+
+
+2. Update nginx conf
 
 Rename the file at `common/templates/example.com.conf` and set it to `yourdomain.com.conf`.
 Or keep the example template and make a copy of it instead.
 
-Now edit the file at `plausible/vars/main.yml` and set the values as you like.
 
-After having setup all the variables, you can encrypt your variables files like so:
+3. Change the plausible variables
+
+Now edit the file at `plausible/vars/main.yml` 
+
+
+4. Add a vault password
+
+Create a file in the project root called 'vault_password_file'. Do not share this with anyone. Do not check this file into version control. The name of this file is controlled by ansible.cfg file. 
+
+5. Encrypt your Ansible vars files
+
+After having setup all the variables, you *NEED TO* encrypt your variables files like so:
 
 ```shell
 ansible-vault encrypt common/vars/main.yml
 ansible-vault encrypt plausible/vars/main.yml
 ```
 
-If you encrypt your variables, edit `Makefile` and set `ANSIBLE_ASK_VAULT_PASS` and
-`PLAUSIBLE_ASK_VAULT_PASS` to True.
+6. Run make
 
-Run `make` and the play should start.
+Run `make`
 
 Once the play is complete, your plausible instance should be accessible at *yourdomain.com*.
 
-### Things to note
 
-- Passwords for Linux users must be hashed using `mkpasswd -m sha-512`
+### Ansible Collections 
+
+Collections to be added as roles/tasks are updated to current
+
+- ansible-galaxy collection install community.general
+
 
 ## Installing on an existing server
 

@@ -1,5 +1,6 @@
 all:
-  hosts: plausible
+  hosts: 
+    127.0.0.1:
   vars:
-    admin_username: "baws"
+    admin_username: "admin"
     plausible_port: "10000"

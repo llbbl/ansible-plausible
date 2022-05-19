@@ -1,1 +1,7 @@
 .vscode
+.DS_Store
+.vault_pass.txt
+vault_password_file
+.vault_pass
+.idea/
+*.retry
